@@ -72,34 +72,30 @@ public class HotelExercise {
                   BufferedWriter bw = new BufferedWriter(output);
                   Scanner scan = new Scanner(System.in);
                   Scanner check = new Scanner(new File("guestInformation.dat"));
+                  int id = Guests.getGuestID();
                   System.out.println("Full name: ");
                   String name = scan.nextLine();
                   System.out.println("Address: ");
                   String address = scan.nextLine();
                   System.out.println("Tlf number: ");
                   int tlf = scan.nextInt();
-                  int id = Guests.getGuestID();
-                  if (id < 8) {
                      while (check.hasNextLine()){
                      int number = check.nextInt();
                      String text = check.nextLine();
                         if (number == id) {
                            id++;
-                           //if (id < 9) {
-                       // }
-                       // else {
-                           //System.out.println("Too many Guests!");
-                           //break;
-                           //}
                         }
                   }
+                  if (id < 9) {
                   System.out.println("You have guestID# " + id);
                   bw.write(id + " Name: " + name + " Address: " + address + ", Tlf: " + tlf + "\n");
                   bw.close();
                   System.out.println();
                   menu();
                   }
-                  else {
+                  else if (id > 8){
+                  System.out.println("Too many guests!");
+                  System.out.println();
                   menu();
                   }
                   }
